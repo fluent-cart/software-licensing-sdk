@@ -99,7 +99,7 @@ class LicenseSettings
 
         $currentLicense = $this->licensing->getStatus();
 
-        if ($currentLicense['status'] === 'active' && $currentLicense['license_key'] === $licenseKey) {
+        if ($currentLicense['status'] === 'valid' &&$currentLicense['license_key'] === $licenseKey) {
             wp_send_json([
                 'message' => 'This license key is already active.',
             ], 200);
@@ -123,7 +123,7 @@ class LicenseSettings
 
         return wp_send_json([
             'message' => 'License activated successfully.',
-            'status'  => 'active'
+            'status'  => 'valid'
         ], 200);
     }
 
